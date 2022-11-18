@@ -2,7 +2,7 @@ import styled from "styled-components"
 import plusIcon from "../../assets/img/plus-circle.png"
 import minusIcon from "../../assets/img/minus-circle.png"
 
-export default function(){
+export default function Footer(){
     return(
         <Container>
             <ContainerButton>

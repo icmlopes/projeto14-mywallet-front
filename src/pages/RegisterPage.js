@@ -1,43 +1,69 @@
 import styled from "styled-components"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "../components/useForm"
+import axios from "axios"
 
-export default function RegisterPage(){
+export default function RegisterPage() {
 
-    const [form, handleForm] = useForm({ name:"", email:"", password:"" })
+    const [form, handleForm] = useForm({ name: "", email: "", password: "", repeat_password:"" })
     const navigate = useNavigate()
 
-    function registration(event){
+    function registration(event) {
 
         event.preventDefault()
 
+        const URL = "http://localhost:5000/sign-up"
+
+        const promise = axios.post(URL, form)
+
+        promise.then(() =>
+            navigate("/"))
+
+        promise.catch((err) => {
+
+            console.log(err.response)
+        })
+
+        console.log(form)
 
     }
 
-    return(
+    return (
         <Container>
             <Titulo>
                 MyWallet
             </Titulo>
             <>
-                <ContainerForm>
+                <ContainerForm onSubmit={registration}>
                     <input
                         type="name"
                         placeholder="Nome"
+                        name="name"
+                        value={form.name}
+                        onChange={handleForm}
                     />
                     <input
                         type="email"
                         placeholder="E-mail"
+                        name="email"
+                        value={form.email}
+                        onChange={handleForm}
                     />
                     <input
                         type="password"
                         placeholder="Senha"
+                        name="password"
+                        value={form.password}
+                        onChange={handleForm}
                     />
                     <input
                         type="password"
                         placeholder="Confirme a senha"
+                        name="repeat_password"
+                        value={form.repeat_password}
+                        onChange={handleForm}
                     />
-                    <Button>
+                    <Button type="submit">
                         Cadastrar
                     </Button>
                 </ContainerForm>

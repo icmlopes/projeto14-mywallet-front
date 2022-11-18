@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import HomePage from "./pages/HomePage/HomePage"
+import IncomePage from "./pages/IncomePage"
+import ExpensePage from "./pages/ExpensePage"
 
 
 export default function App() {
@@ -15,8 +17,10 @@ export default function App() {
                 <Info>
                     <Routes>
                         <Route path="/" element={<LoginPage />} />
-                        <Route path="/sign-up" element={<RegisterPage />}/>
+                        <Route path="/sign-up" element={<RegisterPage />} />
                         <Route path="/home" element={<HomePage/>} />
+                        <Route path="/income" element={ <IncomePage />} />
+                        <Route path="/expense" element={ <ExpensePage /> } />
                     </Routes>
                 </Info>
             </ContainerScreen>
