@@ -1,23 +1,58 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { useForm } from "../components/useForm"
+import { InfoContext } from "../context/Info"
+import axios from "axios"
 
 export default function LoginPage() {
+
+    const navigate = useNavigate()
+    const { setUser } = useContext(InfoContext)
+    const [form, handleForm] = useForm({ email: "", password: "" })
+
+    function login(event) {
+        event.preventDefault()
+
+        const URL = "http://localhost:5000/"
+
+        const promise = axios.post(URL, form)
+
+        promise.then(res => {
+            setUser(res.data)
+            navigate("/home")
+            console.log(res.data)
+        })
+
+        promise.catch((err) => {
+            console.log(err.response.data)
+            alert(err.response.data.message)
+        })
+        
+    }
+
     return (
         <Container>
             <Titulo>
                 MyWallet
             </Titulo>
             <>
-                <ContainerForm>
+                <ContainerForm onSubmit={login}>
                     <input
                         type="email"
                         placeholder="E-mail"
+                        name="email"
+                        value={form.email}
+                        onChange={handleForm}
                     />
                     <input
                         type="password"
                         placeholder="Senha"
+                        name="password"
+                        value={form.password}
+                        onChange={handleForm}
                     />
-                    <Button>
+                    <Button type="submit">
                         Entrar
                     </Button>
                 </ContainerForm>

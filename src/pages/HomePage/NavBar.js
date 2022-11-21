@@ -5,7 +5,9 @@ export default function NavBar(){
     return(
         <Container>
             <h1>Olá, Fulano</h1>
-            <img src={icone} alt="icone"/>
+            <Button>
+                <img src={icone} alt="logo" />
+            </Button>
         </Container>
     )
 }
@@ -22,4 +24,8 @@ h1{
     font-weight: 700;
     color: #FFFFFF;
 }
+`
+const Button = styled.button`
+background-color: transparent;
+border: none;
 `

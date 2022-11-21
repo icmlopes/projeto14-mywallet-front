@@ -8,7 +8,7 @@ export default function IncomePage(){
                 <ContainerForm>
                     <input
                         type="number"
-                        placeholder="valor"
+                        placeholder="Valor"
                     />
                     <input
                         type="text"
