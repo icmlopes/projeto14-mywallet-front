@@ -1,7 +1,12 @@
+// import { useContext } from "react"
 import styled from "styled-components"
 import icone from "../../assets/img/vector.png"
+// import { InfoContext } from "../../context/Info"
 
 export default function NavBar(){
+
+    // const { user, setUser } = useContext(InfoContext) 
+    
     return(
         <Container>
             <h1>Olá, Fulano</h1>
